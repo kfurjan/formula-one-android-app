@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Formula 1</string>
     <string name="splash_scr_content_desc">Racing cars</string>
-    <string name="splash_text">Loading...</string>
+    <string name="splash_text">Loading…</string>
+    <string name="please_connect_to_the_internet">Please connect to the internet!</string>
 </resources>
