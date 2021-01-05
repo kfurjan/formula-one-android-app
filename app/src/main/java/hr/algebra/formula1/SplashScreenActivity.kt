@@ -7,7 +7,10 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import hr.algebra.formula1.databinding.ActivitySplashScreenBinding
-import hr.algebra.formula1.extensions.*
+import hr.algebra.formula1.extensions.applyAnimation
+import hr.algebra.formula1.extensions.getBooleanPreference
+import hr.algebra.formula1.extensions.isOnline
+import hr.algebra.formula1.extensions.startActivity
 
 private const val DELAY: Long = 2600
 const val DATA_IMPORTED: String = "hr.algebra.formula1.data_imported"

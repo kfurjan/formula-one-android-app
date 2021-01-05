@@ -22,7 +22,7 @@ fun Context.isOnline(): Boolean {
         val networkCapabilities = connectivityManager.getNetworkCapabilities(network)
         if (networkCapabilities != null) {
             return networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
-                    networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
         }
     }
 

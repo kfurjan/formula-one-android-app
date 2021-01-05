@@ -13,18 +13,18 @@ const val LIMIT = 1000
 
 interface Formula1DataApi {
 
-    @GET("drivers.json?limit=${LIMIT}")
+    @GET("drivers.json?limit=$LIMIT")
     fun fetchDrivers(): Call<DriverApi>
 
-    @GET("constructors.json?limit=${LIMIT}")
+    @GET("constructors.json?limit=$LIMIT")
     fun fetchConstructors(): Call<List<ConstructorApi>>
 
-    @GET("seasons.json?limit=${LIMIT}")
+    @GET("seasons.json?limit=$LIMIT")
     fun fetchSeasons(): Call<List<SeasonApi>>
 
-    @GET("circuits.json?limit=${LIMIT}")
+    @GET("circuits.json?limit=$LIMIT")
     fun fetchCircuits(): Call<List<CircuitApi>>
 
-    @GET("{data}.json?limit=${LIMIT}")
+    @GET("{data}.json?limit=$LIMIT")
     fun <T> fetchData(@Path("data") data: String): Call<List<T>>
 }
