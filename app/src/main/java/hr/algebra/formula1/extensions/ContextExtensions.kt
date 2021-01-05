@@ -9,7 +9,11 @@ import android.net.NetworkCapabilities
 import androidx.preference.PreferenceManager
 
 inline fun <reified T : Activity> Context.startActivity() =
-    startActivity(Intent(this, T::class.java))
+    startActivity(
+        Intent(this, T::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    )
 
 inline fun <reified T : BroadcastReceiver> Context.sendBroadcast() =
     sendBroadcast(Intent(this, T::class.java))
