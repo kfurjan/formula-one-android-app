@@ -9,7 +9,7 @@ private const val JOB_ID = 1
 
 class Formula1DataService : JobIntentService() {
     override fun onHandleWork(intent: Intent) {
-        Formula1DataFetcher(this).fetchDrivers()
+        Formula1DataFetcher(this).fetchData()
     }
 
     companion object {
