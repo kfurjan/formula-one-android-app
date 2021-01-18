@@ -3,4 +3,15 @@
     <string name="splash_scr_content_desc">Racing cars</string>
     <string name="splash_text">Loading…</string>
     <string name="please_connect_to_the_internet">Please connect to the internet!</string>
+    <string name="navigation_header_icon_desc">Navigation header icon</string>
+    <string name="formula_1">Formula 1</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="drivers">Drivers</string>
+    <string name="constructors">Constructors</string>
+    <string name="circuits">Circuits</string>
+    <string name="seasons">Seasons</string>
+    <string name="about">About</string>
+    <string name="general">General</string>
+    <string name="application_information">Application information</string>
 </resources>

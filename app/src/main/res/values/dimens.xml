@@ -3,4 +3,9 @@
     <dimen name="splash_scr_padding">75dp</dimen>
     <dimen name="splash_image_height">225dp</dimen>
     <dimen name="splash_margin_top">50dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="nav_header_padding">16dp</dimen>
+    <dimen name="nav_header_icon_size">64dp</dimen>
+    <dimen name="border_bottom_height">1dp</dimen>
+    <dimen name="nav_header_tv_padding_top">16dp</dimen>
 </resources>

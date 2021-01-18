@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/general">
+        <menu>
+            <group android:id="@+id/navDrawerGroupData">
+                <item android:id="@+id/navItemDrivers"
+                    android:icon="@drawable/helmet"
+                    android:title="@string/drivers" />
+                <item android:id="@+id/navItemConstructors"
+                    android:icon="@drawable/trophy"
+                    android:title="@string/constructors" />
+                <item android:id="@+id/navItemCircuits"
+                    android:icon="@drawable/race_track"
+                    android:title="@string/circuits" />
+                <item android:id="@+id/navItemSeasons"
+                    android:icon="@drawable/calendar"
+                    android:title="@string/seasons" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/application_information">
+        <menu>
+            <group android:id="@+id/navDrawerGroupAbout">
+                <item android:id="@+id/navItemAbout"
+                    android:icon="@drawable/info"
+                    android:title="@string/about" />
+            </group>
+        </menu>
+    </item>
+
+</menu>
