@@ -1,9 +1,11 @@
 package hr.algebra.formula1
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
@@ -28,14 +30,13 @@ class HostActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun initNavigationDrawer() {
-        val navDrawer = binding.drawerLayout
         toggle = ActionBarDrawerToggle(
             this,
-            navDrawer,
+            binding.drawerLayout,
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
-        navDrawer.addDrawerListener(toggle)
+        binding.drawerLayout.addDrawerListener(toggle)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
@@ -54,6 +55,10 @@ class HostActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 toggleNavigationDrawer()
                 return true
             }
+            R.id.menuExit -> {
+                exitApp()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -66,12 +71,39 @@ class HostActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    private fun exitApp() {
+        AlertDialog.Builder(this).apply {
+            setTitle(R.string.exit)
+            setMessage(getString(R.string.really))
+            setCancelable(true)
+            setPositiveButton("Ok") { _, _ -> finish() }
+            setNegativeButton(getString(R.string.cancel), null)
+            show()
+        }
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.navItemDrivers -> Toast.makeText(this, Driver::class.simpleName, Toast.LENGTH_SHORT).show()
-            R.id.navItemConstructors -> Toast.makeText(this, Constructor::class.simpleName, Toast.LENGTH_SHORT).show()
-            R.id.navItemCircuits -> Toast.makeText(this, Circuit::class.simpleName, Toast.LENGTH_SHORT).show()
-            R.id.navItemSeasons -> Toast.makeText(this, Season::class.simpleName, Toast.LENGTH_SHORT).show()
+            R.id.navItemDrivers -> Toast.makeText(
+                this,
+                Driver::class.simpleName,
+                Toast.LENGTH_SHORT
+            ).show()
+            R.id.navItemConstructors -> Toast.makeText(
+                this,
+                Constructor::class.simpleName,
+                Toast.LENGTH_SHORT
+            ).show()
+            R.id.navItemCircuits -> Toast.makeText(
+                this,
+                Circuit::class.simpleName,
+                Toast.LENGTH_SHORT
+            ).show()
+            R.id.navItemSeasons -> Toast.makeText(
+                this,
+                Season::class.simpleName,
+                Toast.LENGTH_SHORT
+            ).show()
             R.id.navItemAbout -> Toast.makeText(this, "About", Toast.LENGTH_SHORT).show()
         }
         return true
@@ -83,5 +115,10 @@ class HostActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.host_menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }

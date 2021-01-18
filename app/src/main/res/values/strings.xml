@@ -14,4 +14,7 @@
     <string name="about">About</string>
     <string name="general">General</string>
     <string name="application_information">Application information</string>
+    <string name="exit">Exit application</string>
+    <string name="really">Do you really want to exit?</string>
+    <string name="cancel">Cancel</string>
 </resources>
