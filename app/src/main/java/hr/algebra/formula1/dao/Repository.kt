@@ -1,18 +1,16 @@
 package hr.algebra.formula1.dao
 
-import android.database.Cursor
-
 interface Repository <T> {
 
-    fun insert(data: T?): Long
+    suspend fun insert(data: T): Long
 
-    fun query(): Cursor?
+    suspend fun query(): MutableList<T>
 
-    fun queryById(id: Long): Cursor?
+    suspend fun queryById(id: Long): T
 
-    fun delete(): Int
+    suspend fun delete(): Int
 
-    fun deleteById(id: Long): Int
+    suspend fun deleteById(id: Long): Int
 
-    fun update(data: T?): Int
+    suspend fun update(data: T): Int
 }

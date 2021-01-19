@@ -1,6 +1,5 @@
 package hr.algebra.formula1.dao.model
 
-import android.database.Cursor
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -12,20 +11,20 @@ import hr.algebra.formula1.model.Season
 interface SeasonDao : Repository<Season> {
 
     @Insert
-    override fun insert(data: Season?): Long
+    override suspend fun insert(data: Season): Long
 
     @Query("SELECT * FROM Season")
-    override fun query(): Cursor?
+    override suspend fun query(): MutableList<Season>
 
     @Query("SELECT * FROM Season WHERE _id = :id")
-    override fun queryById(id: Long): Cursor?
+    override suspend fun queryById(id: Long): Season
 
     @Query("DELETE FROM Season")
-    override fun delete(): Int
+    override suspend fun delete(): Int
 
     @Query("DELETE FROM Season WHERE _id = :id")
-    override fun deleteById(id: Long): Int
+    override suspend fun deleteById(id: Long): Int
 
     @Update
-    override fun update(data: Season?): Int
+    override suspend fun update(data: Season): Int
 }

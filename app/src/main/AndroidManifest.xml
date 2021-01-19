@@ -7,33 +7,12 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Formula1"
         android:usesCleartextTraffic="true">
-        <provider
-            android:name=".SeasonContentProvider"
-            android:authorities="hr.algebra.formula1.season_provider"
-            android:enabled="true"
-            android:exported="false" />
-        <provider
-            android:name=".ConstructorContentProvider"
-            android:authorities="hr.algebra.formula1.constructor_provider"
-            android:enabled="true"
-            android:exported="false" />
-        <provider
-            android:name=".CircuitContentProvider"
-            android:authorities="hr.algebra.formula1.circuit_provider"
-            android:enabled="true"
-            android:exported="false" />
-        <provider
-            android:name=".DriverContentProvider"
-            android:authorities="hr.algebra.formula1.driver_provider"
-            android:enabled="true"
-            android:exported="false" />
 
         <receiver
             android:name=".Formula1DataReceiver"

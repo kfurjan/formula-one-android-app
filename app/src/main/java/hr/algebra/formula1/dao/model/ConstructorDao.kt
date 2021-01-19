@@ -1,6 +1,5 @@
 package hr.algebra.formula1.dao.model
 
-import android.database.Cursor
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -12,20 +11,20 @@ import hr.algebra.formula1.model.Constructor
 interface ConstructorDao : Repository<Constructor> {
 
     @Insert
-    override fun insert(data: Constructor?): Long
+    override suspend fun insert(data: Constructor): Long
 
     @Query("SELECT * FROM Constructor")
-    override fun query(): Cursor?
+    override suspend fun query(): MutableList<Constructor>
 
     @Query("SELECT * FROM Constructor WHERE _id = :id")
-    override fun queryById(id: Long): Cursor?
+    override suspend fun queryById(id: Long): Constructor
 
     @Query("DELETE FROM Constructor")
-    override fun delete(): Int
+    override suspend fun delete(): Int
 
     @Query("DELETE FROM Constructor WHERE _id = :id")
-    override fun deleteById(id: Long): Int
+    override suspend fun deleteById(id: Long): Int
 
     @Update
-    override fun update(data: Constructor?): Int
+    override suspend fun update(data: Constructor): Int
 }

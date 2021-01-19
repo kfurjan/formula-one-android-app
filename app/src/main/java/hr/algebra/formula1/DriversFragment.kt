@@ -6,14 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import hr.algebra.formula1.dao.Formula1Database
 import hr.algebra.formula1.databinding.FragmentDriversBinding
 import hr.algebra.formula1.model.Driver
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 
 class DriversFragment : Fragment() {
 
     private var _binding: FragmentDriversBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var db: Formula1Database
     private lateinit var drivers: MutableList<Driver>
 
     override fun onCreateView(
@@ -21,13 +25,15 @@ class DriversFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDriversBinding.inflate(inflater, container, false)
-        val tempDrivers: MutableList<Driver> = mutableListOf(
-            Driver(1, "rosberg", "Nico", "Rosberg", "", "10-10-1980", "German", "ROS", "6"),
-            Driver(1, "rosberg", "Lewis", "Hamilton", "", "10-10-1980", "British", "HAM", "6")
-        )
-        drivers = tempDrivers
+        db = Formula1Database.getInstance(requireContext())
+        runBlocking {
+            val job = async {
+                db.driverDao().query()
+            }
+            drivers = job.await()
+        }
 
+        _binding = FragmentDriversBinding.inflate(inflater, container, false)
         return binding.root
     }
 
