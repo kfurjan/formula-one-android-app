@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragments"
+    app:startDestination="@id/navItemDrivers">
+
+    <fragment
+        android:id="@+id/navItemDrivers"
+        android:name="hr.algebra.formula1.DriversFragment"
+        android:label="@string/drivers"
+        tools:layout="@layout/fragment_drivers" />
+
+    <fragment
+        android:id="@+id/navItemConstructors"
+        android:name="hr.algebra.formula1.ConstructorsFragment"
+        android:label="@string/constructors"
+        tools:layout="@layout/fragment_constructors" />
+
+    <fragment
+        android:id="@+id/navItemCircuits"
+        android:name="hr.algebra.formula1.CircuitsFragment"
+        android:label="@string/circuits"
+        tools:layout="@layout/fragment_circuits" />
+
+    <fragment
+        android:id="@+id/navItemSeasons"
+        android:name="hr.algebra.formula1.SeasonsFragment"
+        android:label="@string/seasons"
+        tools:layout="@layout/fragment_seasons" />
+
+    <fragment
+        android:id="@+id/navItemAbout"
+        android:name="hr.algebra.formula1.AboutFragment"
+        android:label="@string/about"
+        tools:layout="@layout/fragment_about" />
+
+</navigation>

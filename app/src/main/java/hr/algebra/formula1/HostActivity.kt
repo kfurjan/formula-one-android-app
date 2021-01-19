@@ -3,22 +3,18 @@ package hr.algebra.formula1
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import com.google.android.material.navigation.NavigationView
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import hr.algebra.formula1.databinding.ActivityHostBinding
-import hr.algebra.formula1.model.Circuit
-import hr.algebra.formula1.model.Constructor
-import hr.algebra.formula1.model.Driver
-import hr.algebra.formula1.model.Season
 
 private lateinit var binding: ActivityHostBinding
 private lateinit var toggle: ActionBarDrawerToggle
 
-class HostActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class HostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
@@ -27,6 +23,12 @@ class HostActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(binding.root)
 
         initNavigationDrawer()
+        initNavigation()
+    }
+
+    private fun initNavigation() {
+        val navController = Navigation.findNavController(this, R.id.navHostFragment)
+        NavigationUI.setupWithNavController(binding.navView, navController)
     }
 
     private fun initNavigationDrawer() {
@@ -40,8 +42,6 @@ class HostActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
-
-        binding.navView.setNavigationItemSelectedListener(this)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -80,33 +80,6 @@ class HostActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             setNegativeButton(getString(R.string.cancel), null)
             show()
         }
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.navItemDrivers -> Toast.makeText(
-                this,
-                Driver::class.simpleName,
-                Toast.LENGTH_SHORT
-            ).show()
-            R.id.navItemConstructors -> Toast.makeText(
-                this,
-                Constructor::class.simpleName,
-                Toast.LENGTH_SHORT
-            ).show()
-            R.id.navItemCircuits -> Toast.makeText(
-                this,
-                Circuit::class.simpleName,
-                Toast.LENGTH_SHORT
-            ).show()
-            R.id.navItemSeasons -> Toast.makeText(
-                this,
-                Season::class.simpleName,
-                Toast.LENGTH_SHORT
-            ).show()
-            R.id.navItemAbout -> Toast.makeText(this, "About", Toast.LENGTH_SHORT).show()
-        }
-        return true
     }
 
     override fun onBackPressed() {
