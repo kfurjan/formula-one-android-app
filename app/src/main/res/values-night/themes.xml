@@ -22,4 +22,7 @@
     <style name="NavigationDrawer" parent="Theme.Formula1">
         <item name="android:listDivider">?attr/colorSecondary</item>
     </style>
+    <style name="CardViewStyle" parent="Theme.Formula1">
+        <item name="cardBackgroundColor">?attr/colorSecondary</item>
+    </style>
 </resources>

@@ -74,6 +74,7 @@ fun Context.fetchDrivers(): MutableList<Driver> {
             )
         }
     }
+    cursor?.close()
 
     return drivers
 }
@@ -101,6 +102,7 @@ fun Context.fetchCircuits(): MutableList<Circuit> {
             )
         }
     }
+    cursor?.close()
 
     return circuits
 }
@@ -125,6 +127,7 @@ fun Context.fetchConstructors(): MutableList<Constructor> {
             )
         }
     }
+    cursor?.close()
 
     return constructors
 }
@@ -147,6 +150,7 @@ fun Context.fetchSeasons(): MutableList<Season> {
             )
         }
     }
+    cursor?.close()
 
     return seasons
 }

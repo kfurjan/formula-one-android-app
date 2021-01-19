@@ -8,4 +8,10 @@
     <dimen name="nav_header_icon_size">64dp</dimen>
     <dimen name="border_bottom_height">1dp</dimen>
     <dimen name="nav_header_tv_padding_top">16dp</dimen>
+    <dimen name="cardCornerRadius">10dp</dimen>
+    <dimen name="driverGridLayoutHeight">60dp</dimen>
+    <dimen name="driverLinearLayoutHeight">25dp</dimen>
+    <dimen name="driverTvHeight">25dp</dimen>
+    <dimen name="driverTvMarginStart">10dp</dimen>
+    <dimen name="driverTvMarginTop">5dp</dimen>
 </resources>
