@@ -1,10 +1,10 @@
 package hr.algebra.formula1.dao
 
-interface Repository <T> {
+interface DaoRepository <T> {
 
     suspend fun insert(data: T): Long
 
-    suspend fun query(): MutableList<T>
+    suspend fun query(): List<T>
 
     suspend fun queryById(id: Long): T
 

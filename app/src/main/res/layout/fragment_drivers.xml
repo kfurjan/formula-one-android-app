@@ -7,13 +7,24 @@
     android:orientation="vertical"
     tools:context=".DriversFragment">
 
-    <com.mancj.materialsearchbar.MaterialSearchBar
-        android:id="@+id/driverSearchBar"
-        style="@style/SearchBar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:mt_maxSuggestionsCount="5"
-        app:mt_placeholder="Search driver information" />
+        android:layout_height="@dimen/driver_linear_height"
+        android:orientation="horizontal">
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/driverSearchBar"
+            style="@style/SearchBar"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="match_parent"
+            app:mt_maxSuggestionsCount="5"
+            app:mt_placeholder="@string/driver_search_placeholder" />
+        <Spinner
+            android:id="@+id/driverSpinner"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDrivers"

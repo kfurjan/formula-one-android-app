@@ -7,8 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import hr.algebra.formula1.model.Driver
 
-class DriverAdapter(private val drivers: MutableList<Driver>) :
+class DriverAdapter :
     RecyclerView.Adapter<DriverAdapter.ViewHolder>() {
+
+    private var drivers: List<Driver> = mutableListOf()
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvDriverInformation: TextView = itemView.findViewById(R.id.tvDriverInformation)
         private val tvDriverNationality: TextView = itemView.findViewById(R.id.tvDriverNationality)
@@ -26,6 +29,11 @@ class DriverAdapter(private val drivers: MutableList<Driver>) :
             tvDriverNationality.text = driver.nationality
             tvDriverBirthDate.text = driver.birthDate
         }
+    }
+
+    fun setDrivers(drivers: List<Driver>) {
+        this.drivers = drivers
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

@@ -21,4 +21,8 @@
     <string name="driver_menu_first_name">First name</string>
     <string name="driver_menu_last_name">Last name</string>
     <string name="driver_menu_nationality">Nationality</string>
+    <string name="driver_spinner_name">Name</string>
+    <string name="driver_spinner_last_name">Last name</string>
+    <string name="driver_spinner_nationality">Nationality</string>
+    <string name="driver_search_placeholder">Search driver information</string>
 </resources>
