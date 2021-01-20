@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".DriversFragment">
+
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        android:id="@+id/driverSearchBar"
+        style="@style/SearchBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:mt_maxSuggestionsCount="5"
+        app:mt_placeholder="Search driver information" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDrivers"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-</FrameLayout>
+</LinearLayout>

@@ -14,4 +14,11 @@
     <dimen name="driverTvHeight">25dp</dimen>
     <dimen name="driverTvMarginStart">10dp</dimen>
     <dimen name="driverTvMarginTop">5dp</dimen>
+    <dimen name="driverIvWidth">100dp</dimen>
+    <dimen name="driverIvPadding">10dp</dimen>
+    <dimen name="driverLinearHeight">75dp</dimen>
+    <dimen name="driverMaterialMargin">8dp</dimen>
+    <dimen name="driverCardElevation">4dp</dimen>
+    <dimen name="driverContentPaddingStart">7dp</dimen>
+    <dimen name="driverContentPaddingTop">5dp</dimen>
 </resources>

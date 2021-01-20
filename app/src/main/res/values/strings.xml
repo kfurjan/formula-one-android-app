@@ -17,4 +17,8 @@
     <string name="exit">Exit application</string>
     <string name="really">Do you really want to exit?</string>
     <string name="cancel">Cancel</string>
+    <string name="helmet_desc">Helmet</string>
+    <string name="driver_menu_first_name">First name</string>
+    <string name="driver_menu_last_name">Last name</string>
+    <string name="driver_menu_nationality">Nationality</string>
 </resources>

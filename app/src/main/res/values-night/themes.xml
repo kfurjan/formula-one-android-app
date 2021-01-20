@@ -19,10 +19,20 @@
     <style name="SplashScreenTheme" parent="Theme.Formula1">
         <item name="android:navigationBarColor">@color/black</item>
     </style>
+
     <style name="NavigationDrawer" parent="Theme.Formula1">
         <item name="android:listDivider">?attr/colorSecondary</item>
     </style>
-    <style name="CardViewStyle" parent="Theme.Formula1">
-        <item name="cardBackgroundColor">?attr/colorSecondary</item>
+
+    <style name="SearchBar" parent="Theme.Formula1">
+        <item name="mt_backIconTint">?attr/colorSecondaryVariant</item>
+        <item name="mt_clearIconTint">?attr/colorSecondaryVariant</item>
+        <item name="mt_menuIconTint">?attr/colorSecondaryVariant</item>
+        <item name="mt_navIconTint">?attr/colorSecondaryVariant</item>
+        <item name="mt_placeholderColor">?attr/colorSecondaryVariant</item>
+        <item name="mt_searchBarColor">@android:color/transparent</item>
+        <item name="mt_searchIconTint">?attr/colorSecondaryVariant</item>
+        <item name="mt_textColor">?attr/colorSecondaryVariant</item>
+        <item name="mt_textCursorTint">?attr/colorSecondaryVariant</item>
     </style>
 </resources>

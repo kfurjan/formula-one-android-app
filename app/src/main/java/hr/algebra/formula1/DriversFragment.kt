@@ -40,6 +40,8 @@ class DriversFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as HostActivity).supportActionBar?.title = getString(R.string.drivers)
+        binding.driverSearchBar.inflateMenu(R.menu.driver_search_menu)
+
         val driverAdapter = DriverAdapter(drivers)
         binding.rvDrivers.apply {
             layoutManager = LinearLayoutManager(activity)
