@@ -7,12 +7,15 @@ import hr.algebra.formula1.api.communication.circuits.CircuitApi
 import hr.algebra.formula1.api.communication.constructors.ConstructorApi
 import hr.algebra.formula1.api.communication.drivers.DriverApi
 import hr.algebra.formula1.api.communication.seasons.SeasonApi
-import hr.algebra.formula1.dao.Formula1Database
 import hr.algebra.formula1.extensions.sendBroadcast
 import hr.algebra.formula1.model.Circuit
 import hr.algebra.formula1.model.Constructor
 import hr.algebra.formula1.model.Driver
 import hr.algebra.formula1.model.Season
+import hr.algebra.formula1.repository.CircuitRepository
+import hr.algebra.formula1.repository.ConstructorRepository
+import hr.algebra.formula1.repository.DriverRepository
+import hr.algebra.formula1.repository.SeasonRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,9 +27,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Formula1DataFetcher(private val context: Context) {
 
-    private val scope = CoroutineScope(Dispatchers.IO)
-    private var db: Formula1Database
+    private val dataFetcherScope = CoroutineScope(Dispatchers.IO)
     private val formula1DataApi: Formula1DataApi
+    private val driverRepository: DriverRepository
+    private val circuitRepository: CircuitRepository
+    private val seasonRepository: SeasonRepository
+    private val constructorRepository: ConstructorRepository
 
     init {
         val retrofit = Retrofit.Builder()
@@ -34,7 +40,10 @@ class Formula1DataFetcher(private val context: Context) {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         formula1DataApi = retrofit.create(Formula1DataApi::class.java)
-        db = Formula1Database.getInstance(context)
+        driverRepository = DriverRepository(context)
+        circuitRepository = CircuitRepository(context)
+        seasonRepository = SeasonRepository(context)
+        constructorRepository = ConstructorRepository(context)
     }
 
     fun fetchData() {
@@ -76,9 +85,9 @@ class Formula1DataFetcher(private val context: Context) {
         }
 
     private fun populateCircuits(circuitsData: CircuitApi) {
-        scope.launch {
+        dataFetcherScope.launch {
             circuitsData.mRData.circuitTable.circuits.forEach {
-                db.circuitDao().insert(
+                circuitRepository.insertCircuit(
                     Circuit(
                         null,
                         it.circuitId,
@@ -95,9 +104,9 @@ class Formula1DataFetcher(private val context: Context) {
     }
 
     private fun populateConstructors(constructorsData: ConstructorApi) {
-        scope.launch {
+        dataFetcherScope.launch {
             constructorsData.mRData.constructorTable.constructors.forEach {
-                db.constructorDao().insert(
+                constructorRepository.insertConstructor(
                     Constructor(null, it.constructorId, it.name, it.nationality, it.url)
                 )
             }
@@ -105,17 +114,17 @@ class Formula1DataFetcher(private val context: Context) {
     }
 
     private fun populateSeasons(seasonsData: SeasonApi) {
-        scope.launch {
+        dataFetcherScope.launch {
             seasonsData.mRData.seasonTable.seasons.forEach {
-                db.seasonDao().insert(Season(null, it.season, it.url))
+                seasonRepository.insertSeason(Season(null, it.season, it.url))
             }
         }
     }
 
     private fun populateDrivers(driversData: DriverApi) {
-        scope.launch {
+        dataFetcherScope.launch {
             driversData.mRData.driverTable.drivers.forEach {
-                db.driverDao().insert(
+                driverRepository.insertDriver(
                     Driver(
                         null,
                         it.driverId,

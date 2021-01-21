@@ -21,7 +21,8 @@
     </style>
 
     <style name="NavigationDrawer" parent="Theme.Formula1">
-        <item name="android:listDivider">?attr/colorSecondary</item>
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorControlHighlight">?attr/colorSecondary</item>
     </style>
 
     <style name="SearchBar" parent="Theme.Formula1">
@@ -30,7 +31,7 @@
         <item name="mt_menuIconTint">?attr/colorSecondaryVariant</item>
         <item name="mt_navIconTint">?attr/colorSecondaryVariant</item>
         <item name="mt_placeholderColor">?attr/colorSecondaryVariant</item>
-        <item name="mt_searchBarColor">@android:color/transparent</item>
+        <item name="mt_searchBarColor">@android:color/white</item>
         <item name="mt_searchIconTint">?attr/colorSecondaryVariant</item>
         <item name="mt_textColor">?attr/colorSecondaryVariant</item>
         <item name="mt_textCursorTint">?attr/colorSecondaryVariant</item>

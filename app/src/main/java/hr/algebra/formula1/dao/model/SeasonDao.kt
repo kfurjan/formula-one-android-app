@@ -10,7 +10,7 @@ import hr.algebra.formula1.model.Season
 interface SeasonDao {
 
     @Insert
-    suspend fun insert(data: Season): Long
+    suspend fun insert(season: Season): Long
 
     @Query("SELECT * FROM Season")
     suspend fun query(): MutableList<Season>

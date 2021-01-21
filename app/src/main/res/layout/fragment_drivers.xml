@@ -19,7 +19,8 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             app:mt_maxSuggestionsCount="5"
-            app:mt_placeholder="@string/driver_search_placeholder" />
+            app:mt_placeholder="@string/driver_search_placeholder"
+            app:mt_roundedSearchBarEnabled="true" />
 
         <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/driverSpinner"

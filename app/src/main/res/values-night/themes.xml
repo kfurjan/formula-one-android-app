@@ -21,7 +21,8 @@
     </style>
 
     <style name="NavigationDrawer" parent="Theme.Formula1">
-        <item name="android:listDivider">?attr/colorSecondary</item>
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorControlHighlight">?attr/colorSecondary</item>
     </style>
 
     <style name="SearchBar" parent="Theme.Formula1">

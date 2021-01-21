@@ -10,7 +10,7 @@ import hr.algebra.formula1.model.Constructor
 interface ConstructorDao {
 
     @Insert
-    suspend fun insert(data: Constructor): Long
+    suspend fun insert(constructor: Constructor): Long
 
     @Query("SELECT * FROM Constructor")
     suspend fun query(): MutableList<Constructor>

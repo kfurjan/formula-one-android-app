@@ -11,7 +11,7 @@ import hr.algebra.formula1.model.Driver
 interface DriverDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(data: Driver): Long
+    suspend fun insert(driver: Driver): Long
 
     @Query("SELECT * FROM Driver")
     fun query(): LiveData<List<Driver>>

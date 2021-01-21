@@ -10,7 +10,7 @@ import hr.algebra.formula1.model.Circuit
 interface CircuitDao {
 
     @Insert
-    suspend fun insert(data: Circuit): Long
+    suspend fun insert(circuit: Circuit): Long
 
     @Query("SELECT * FROM Circuit")
     suspend fun query(): MutableList<Circuit>
