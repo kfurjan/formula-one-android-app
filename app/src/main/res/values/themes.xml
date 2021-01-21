@@ -35,4 +35,10 @@
         <item name="mt_textColor">?attr/colorSecondaryVariant</item>
         <item name="mt_textCursorTint">?attr/colorSecondaryVariant</item>
     </style>
+
+    <style name="Spinner" parent="Theme.Formula1">
+        <item name="ms_arrow_tint">?attr/colorSecondaryVariant</item>
+        <item name="ms_text_color">?attr/colorSecondaryVariant</item>
+        <item name="ms_background_color">@android:color/white</item>
+    </style>
 </resources>

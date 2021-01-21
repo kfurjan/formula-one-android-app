@@ -11,19 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/driver_linear_height"
         android:orientation="horizontal">
+
         <com.mancj.materialsearchbar.MaterialSearchBar
             android:id="@+id/driverSearchBar"
             style="@style/SearchBar"
             android:layout_width="0dp"
-            android:layout_weight="5"
             android:layout_height="match_parent"
+            android:layout_weight="5"
             app:mt_maxSuggestionsCount="5"
             app:mt_placeholder="@string/driver_search_placeholder" />
-        <Spinner
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/driverSpinner"
+            style="@style/Spinner"
             android:layout_width="0dp"
-            android:layout_weight="3"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="3" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

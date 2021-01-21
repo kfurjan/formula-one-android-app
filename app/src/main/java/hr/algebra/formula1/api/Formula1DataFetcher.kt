@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Formula1DataFetcher(private val context: Context) {
 
     private val scope = CoroutineScope(Dispatchers.IO)
-    private lateinit var db: Formula1Database
+    private var db: Formula1Database
     private val formula1DataApi: Formula1DataApi
 
     init {
