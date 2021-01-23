@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import hr.algebra.formula1.factory.RepositoryFactory
 import hr.algebra.formula1.model.Driver
 import hr.algebra.formula1.repository.DriverRepository
 
@@ -17,13 +18,13 @@ class DriverViewModel(application: Application) : AndroidViewModel(application) 
         get() = _drivers
 
     init {
-        repository = DriverRepository(context)
-        fetchDrivers()
+        repository = RepositoryFactory.getRepository(context)
+        getAllDrivers()
     }
 
     fun getDriversData() = drivers
 
-    private fun fetchDrivers() =
+    private fun getAllDrivers() =
         _drivers.addSource(repository.queryAll()) { drivers ->
             _drivers.value = drivers
         }
