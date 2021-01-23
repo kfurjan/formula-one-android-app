@@ -14,9 +14,10 @@ import hr.algebra.formula1.viewmodel.DriverViewModel
 class DriversFragment : Fragment() {
 
     private var _binding: FragmentDriversBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel: DriverViewModel by viewModels()
+    private val binding
+        get() = _binding!!
 
+    private val viewModel: DriverViewModel by viewModels()
     private lateinit var driverAdapter: DriverAdapter
 
     override fun onCreateView(

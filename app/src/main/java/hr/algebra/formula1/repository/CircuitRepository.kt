@@ -1,17 +1,22 @@
 package hr.algebra.formula1.repository
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import hr.algebra.formula1.dao.Formula1Database
 import hr.algebra.formula1.dao.model.CircuitDao
 import hr.algebra.formula1.model.Circuit
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 
-class CircuitRepository(context: Context) {
+class CircuitRepository(context: Context) : Repository<Circuit> {
 
-    private val repositoryScope = CoroutineScope(Dispatchers.IO)
-    private val circuitDao: CircuitDao =
-        Formula1Database.getInstance(context).circuitDao()
+    private val circuitDao: CircuitDao = Formula1Database.getInstance(context).circuitDao()
 
-    suspend fun insertCircuit(circuit: Circuit) = circuitDao.insert(circuit)
+    override fun queryAll(): LiveData<List<Circuit>> =
+        Transformations.map(circuitDao.query()) { circuits -> circuits }
+
+    override suspend fun insert(data: Circuit) = circuitDao.insert(data)
+
+    override suspend fun update(data: Circuit) = circuitDao.update(data)
+
+    override suspend fun delete(data: Circuit) = circuitDao.delete(data)
 }

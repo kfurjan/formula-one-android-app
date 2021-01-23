@@ -1,17 +1,22 @@
 package hr.algebra.formula1.repository
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import hr.algebra.formula1.dao.Formula1Database
 import hr.algebra.formula1.dao.model.SeasonDao
 import hr.algebra.formula1.model.Season
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 
-class SeasonRepository(context: Context) {
+class SeasonRepository(context: Context) : Repository<Season> {
 
-    private val repositoryScope = CoroutineScope(Dispatchers.IO)
-    private val seasonDao: SeasonDao =
-        Formula1Database.getInstance(context).seasonDao()
+    private val seasonDao: SeasonDao = Formula1Database.getInstance(context).seasonDao()
 
-    suspend fun insertSeason(season: Season) = seasonDao.insert(season)
+    override fun queryAll(): LiveData<List<Season>> =
+        Transformations.map(seasonDao.query()) { seasons -> seasons }
+
+    override suspend fun insert(data: Season) = seasonDao.insert(data)
+
+    override suspend fun update(data: Season) = seasonDao.update(data)
+
+    override suspend fun delete(data: Season) = seasonDao.delete(data)
 }

@@ -24,7 +24,7 @@ class DriverViewModel(application: Application) : AndroidViewModel(application) 
     fun getDriversData() = drivers
 
     private fun fetchDrivers() =
-        _drivers.addSource(repository.getAllDrives()) { drivers ->
+        _drivers.addSource(repository.queryAll()) { drivers ->
             _drivers.value = drivers
         }
 

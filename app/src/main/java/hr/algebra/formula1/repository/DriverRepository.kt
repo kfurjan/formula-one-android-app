@@ -2,62 +2,30 @@ package hr.algebra.formula1.repository
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import hr.algebra.formula1.dao.Formula1Database
 import hr.algebra.formula1.dao.model.DriverDao
 import hr.algebra.formula1.model.Driver
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.runBlocking
 
-class DriverRepository(context: Context) {
+class DriverRepository(context: Context) : Repository<Driver> {
 
-    private val repositoryScope = CoroutineScope(Dispatchers.IO)
     private val driverDao: DriverDao = Formula1Database.getInstance(context).driverDao()
 
-    suspend fun insertDriver(driver: Driver) = driverDao.insert(driver)
+    override fun queryAll(): LiveData<List<Driver>> =
+        Transformations.map(driverDao.query()) { drivers -> drivers }
 
-    fun getAllDrives(): LiveData<List<Driver>> {
-        lateinit var drivers: LiveData<List<Driver>>
-        runBlocking {
-            val job = repositoryScope.async {
-                driverDao.query()
-            }
-            drivers = job.await()
-        }
-        return drivers
-    }
+    override suspend fun insert(data: Driver) = driverDao.insert(data)
 
-    fun getDriversFilteredByName(name: String): LiveData<List<Driver>> {
-        lateinit var drivers: LiveData<List<Driver>>
-        runBlocking {
-            val job = repositoryScope.async {
-                driverDao.queryByName(name)
-            }
-            drivers = job.await()
-        }
-        return drivers
-    }
+    override suspend fun update(data: Driver) = driverDao.update(data)
 
-    fun getDriversFilteredByLastName(lastName: String): LiveData<List<Driver>> {
-        lateinit var drivers: LiveData<List<Driver>>
-        runBlocking {
-            val job = repositoryScope.async {
-                driverDao.queryByLastName(lastName)
-            }
-            drivers = job.await()
-        }
-        return drivers
-    }
+    override suspend fun delete(data: Driver) = driverDao.delete(data)
 
-    fun getDriversFilteredByNationality(nationality: String): LiveData<List<Driver>> {
-        lateinit var drivers: LiveData<List<Driver>>
-        runBlocking {
-            val job = repositoryScope.async {
-                driverDao.queryByNationality(nationality)
-            }
-            drivers = job.await()
-        }
-        return drivers
-    }
+    fun getDriversFilteredByName(name: String): LiveData<List<Driver>> =
+        Transformations.map(driverDao.queryByName(name)) { drivers -> drivers }
+
+    fun getDriversFilteredByLastName(lastName: String): LiveData<List<Driver>> =
+        Transformations.map(driverDao.queryByLastName(lastName)) { drivers -> drivers }
+
+    fun getDriversFilteredByNationality(nationality: String): LiveData<List<Driver>> =
+        Transformations.map(driverDao.queryByNationality(nationality)) { drivers -> drivers }
 }

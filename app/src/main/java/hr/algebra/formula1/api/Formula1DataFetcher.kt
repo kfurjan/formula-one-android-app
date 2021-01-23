@@ -29,6 +29,7 @@ class Formula1DataFetcher(private val context: Context) {
 
     private val dataFetcherScope = CoroutineScope(Dispatchers.IO)
     private val formula1DataApi: Formula1DataApi
+
     private val driverRepository: DriverRepository
     private val circuitRepository: CircuitRepository
     private val seasonRepository: SeasonRepository
@@ -40,6 +41,7 @@ class Formula1DataFetcher(private val context: Context) {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         formula1DataApi = retrofit.create(Formula1DataApi::class.java)
+
         driverRepository = DriverRepository(context)
         circuitRepository = CircuitRepository(context)
         seasonRepository = SeasonRepository(context)
@@ -87,7 +89,7 @@ class Formula1DataFetcher(private val context: Context) {
     private fun populateCircuits(circuitsData: CircuitApi) {
         dataFetcherScope.launch {
             circuitsData.mRData.circuitTable.circuits.forEach {
-                circuitRepository.insertCircuit(
+                circuitRepository.insert(
                     Circuit(
                         null,
                         it.circuitId,
@@ -106,7 +108,7 @@ class Formula1DataFetcher(private val context: Context) {
     private fun populateConstructors(constructorsData: ConstructorApi) {
         dataFetcherScope.launch {
             constructorsData.mRData.constructorTable.constructors.forEach {
-                constructorRepository.insertConstructor(
+                constructorRepository.insert(
                     Constructor(null, it.constructorId, it.name, it.nationality, it.url)
                 )
             }
@@ -116,7 +118,7 @@ class Formula1DataFetcher(private val context: Context) {
     private fun populateSeasons(seasonsData: SeasonApi) {
         dataFetcherScope.launch {
             seasonsData.mRData.seasonTable.seasons.forEach {
-                seasonRepository.insertSeason(Season(null, it.season, it.url))
+                seasonRepository.insert(Season(null, it.season, it.url))
             }
         }
     }
@@ -124,7 +126,7 @@ class Formula1DataFetcher(private val context: Context) {
     private fun populateDrivers(driversData: DriverApi) {
         dataFetcherScope.launch {
             driversData.mRData.driverTable.drivers.forEach {
-                driverRepository.insertDriver(
+                driverRepository.insert(
                     Driver(
                         null,
                         it.driverId,
