@@ -7,11 +7,20 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.preference.PreferenceManager
+import hr.algebra.formula1.R
 
 inline fun <reified T : Activity> Context.startActivity() =
     startActivity(
         Intent(this, T::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    )
+
+inline fun <reified T : Activity> Context.startActivity(key: String, value: String) =
+    startActivity(
+        Intent(this, T::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            putExtra(key, value)
         }
     )
 
@@ -42,3 +51,15 @@ fun Context.setBooleanPreference(key: String, value: Boolean) =
 fun Context.getBooleanPreference(key: String) =
     PreferenceManager.getDefaultSharedPreferences(this)
         .getBoolean(key, false)
+
+fun Context.startShareIntent(url: String?) =
+    startActivity(
+        Intent.createChooser(
+            Intent(Intent.ACTION_SEND).apply {
+                type = getString(R.string.text_plain)
+                putExtra(Intent.EXTRA_TEXT, url)
+                putExtra(Intent.EXTRA_SUBJECT, getString(R.string.copied_url))
+            },
+            getString(R.string.share_url_with_friends)
+        )
+    )

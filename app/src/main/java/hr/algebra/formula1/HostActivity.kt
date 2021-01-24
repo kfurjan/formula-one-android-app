@@ -49,20 +49,6 @@ class HostActivity : AppCompatActivity() {
         toggle.syncState()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                toggleNavigationDrawer()
-                return true
-            }
-            R.id.menuExit -> {
-                exitApp()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     private fun toggleNavigationDrawer() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawers()
@@ -93,5 +79,19 @@ class HostActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.host_menu, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                toggleNavigationDrawer()
+                return true
+            }
+            R.id.menuExit -> {
+                exitApp()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

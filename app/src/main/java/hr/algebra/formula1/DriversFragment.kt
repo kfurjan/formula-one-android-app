@@ -44,7 +44,7 @@ class DriversFragment : Fragment() {
         )
 
     private fun initDriverAdapter() {
-        driverAdapter = DriverAdapter()
+        driverAdapter = DriverAdapter(requireContext())
         binding.rvDrivers.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = driverAdapter

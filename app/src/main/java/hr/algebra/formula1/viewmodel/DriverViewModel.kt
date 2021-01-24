@@ -11,14 +11,13 @@ import hr.algebra.formula1.repository.DriverRepository
 class DriverViewModel(application: Application) : AndroidViewModel(application) {
 
     private val context = getApplication<Application>().applicationContext
-    private val repository: DriverRepository
+    private val repository: DriverRepository = RepositoryFactory.getRepository(context)
 
     private val _drivers = MediatorLiveData<List<Driver>>()
     private val drivers: LiveData<List<Driver>>
         get() = _drivers
 
     init {
-        repository = RepositoryFactory.getRepository(context)
         getAllDrivers()
     }
 

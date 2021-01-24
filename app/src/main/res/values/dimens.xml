@@ -8,18 +8,18 @@
     <dimen name="nav_header_icon_size">64dp</dimen>
     <dimen name="border_bottom_height">1dp</dimen>
     <dimen name="nav_header_tv_padding_top">16dp</dimen>
-    <dimen name="cardCornerRadius">10dp</dimen>
+    <dimen name="materialCardCornerRadius">8dp</dimen>
     <dimen name="driverGridLayoutHeight">60dp</dimen>
     <dimen name="driverLinearLayoutHeight">25dp</dimen>
     <dimen name="driverTvHeight">25dp</dimen>
     <dimen name="driverTvMarginStart">10dp</dimen>
     <dimen name="driverTvMarginTop">5dp</dimen>
-    <dimen name="driverIvWidth">100dp</dimen>
-    <dimen name="driverIvPadding">10dp</dimen>
-    <dimen name="driverLinearHeight">75dp</dimen>
-    <dimen name="driverMaterialMargin">8dp</dimen>
-    <dimen name="driverCardElevation">4dp</dimen>
-    <dimen name="driverContentPaddingStart">7dp</dimen>
-    <dimen name="driverContentPaddingTop">5dp</dimen>
+    <dimen name="cardIvHeight">100dp</dimen>
+    <dimen name="cardIvPadding">10dp</dimen>
+    <dimen name="cardLinearHeight">75dp</dimen>
+    <dimen name="materialCardMargin">8dp</dimen>
+    <dimen name="materialCardElevation">4dp</dimen>
+    <dimen name="cardContentPaddingStart">7dp</dimen>
+    <dimen name="cardContentPaddingTop">5dp</dimen>
     <dimen name="driver_linear_height">50dp</dimen>
 </resources>
