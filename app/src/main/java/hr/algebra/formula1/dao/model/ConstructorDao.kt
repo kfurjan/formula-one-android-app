@@ -11,4 +11,10 @@ abstract class ConstructorDao : BaseDao<Constructor> {
 
     @Query("SELECT * FROM Constructor")
     abstract fun query(): LiveData<List<Constructor>>
+
+    @Query("SELECT * FROM Constructor WHERE name LIKE '%' || :name || '%'")
+    abstract fun queryByName(name: String): LiveData<List<Constructor>>
+
+    @Query("SELECT * FROM Constructor WHERE nationality LIKE '%' || :nationality || '%'")
+    abstract fun queryByNationality(nationality: String): LiveData<List<Constructor>>
 }

@@ -53,7 +53,9 @@ class DriversFragment : Fragment() {
 
         viewModel.getDriversData().observe(
             viewLifecycleOwner,
-            { drivers -> driverAdapter.setDrivers(drivers) }
+            { drivers ->
+                driverAdapter.setDrivers(drivers)
+            }
         )
     }
 

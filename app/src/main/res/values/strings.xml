@@ -33,4 +33,6 @@
     <string name="formula1_db">formula1.db</string>
     <string name="circuits_tab_title">Circuits</string>
     <string name="maps_tab_title">Map</string>
+    <string name="constructor_search_placeholder">Search constructors</string>
+    <string name="constructor_desc">Constructor image placeholder</string>
 </resources>

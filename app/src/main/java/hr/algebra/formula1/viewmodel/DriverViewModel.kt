@@ -17,7 +17,9 @@ class DriverViewModel(application: Application) : AndroidViewModel(application) 
     private val drivers: LiveData<List<Driver>>
         get() = _drivers
 
-    init { getAllDrivers() }
+    init {
+        getAllDrivers()
+    }
 
     fun getDriversData() = drivers
 

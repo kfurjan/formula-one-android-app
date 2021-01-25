@@ -20,4 +20,10 @@ class ConstructorRepository(context: Context) : Repository<Constructor> {
     override suspend fun update(data: Constructor) = constructorDao.update(data)
 
     override suspend fun delete(data: Constructor) = constructorDao.delete(data)
+
+    fun getConstructorsFilteredByName(name: String): LiveData<List<Constructor>> =
+        Transformations.map(constructorDao.queryByName(name)) { constructors -> constructors }
+
+    fun getConstructorsFilteredByNationality(nationality: String): LiveData<List<Constructor>> =
+        Transformations.map(constructorDao.queryByNationality(nationality)) { constructors -> constructors }
 }

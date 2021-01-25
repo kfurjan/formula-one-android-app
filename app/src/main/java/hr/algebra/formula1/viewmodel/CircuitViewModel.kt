@@ -20,7 +20,9 @@ class CircuitViewModel(application: Application) : AndroidViewModel(application)
 
     companion object : SingletonHolder<CircuitViewModel, Application>({ CircuitViewModel(it) })
 
-    init { getAllCircuits() }
+    init {
+        getAllCircuits()
+    }
 
     fun getCircuitsData() = circuits
 
