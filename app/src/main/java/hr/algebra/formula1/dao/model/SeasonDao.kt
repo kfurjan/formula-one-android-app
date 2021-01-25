@@ -11,4 +11,7 @@ abstract class SeasonDao : BaseDao<Season> {
 
     @Query("SELECT * FROM Season")
     abstract fun query(): LiveData<List<Season>>
+
+    @Query("SELECT * FROM Season WHERE year LIKE '%' || :year || '%'")
+    abstract fun queryByYear(year: String): LiveData<List<Season>>
 }

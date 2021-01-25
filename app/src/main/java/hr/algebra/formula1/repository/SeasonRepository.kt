@@ -19,4 +19,7 @@ class SeasonRepository(context: Context) : Repository<Season> {
     override suspend fun update(data: Season) = seasonDao.update(data)
 
     override suspend fun delete(data: Season) = seasonDao.delete(data)
+
+    fun getSeasonsFilteredByYear(year: String): LiveData<List<Season>> =
+        Transformations.map(seasonDao.queryByYear(year)) { seasons -> seasons }
 }
