@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import hr.algebra.formula1.R
 import hr.algebra.formula1.dao.model.CircuitDao
 import hr.algebra.formula1.dao.model.ConstructorDao
 import hr.algebra.formula1.dao.model.DriverDao
@@ -26,7 +27,10 @@ abstract class Formula1Database : RoomDatabase() {
     abstract fun seasonDao(): SeasonDao
 
     companion object : SingletonHolder<Formula1Database, Context>({
-        Room.databaseBuilder(it.applicationContext, Formula1Database::class.java, "formula1.db")
-            .build()
+        Room.databaseBuilder(
+            it.applicationContext,
+            Formula1Database::class.java,
+            it.getString(R.string.formula1_db)
+        ).build()
     })
 }

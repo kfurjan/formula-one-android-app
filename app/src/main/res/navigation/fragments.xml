@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navItemCircuits"
-        android:name="hr.algebra.formula1.CircuitsFragment"
+        android:name="hr.algebra.formula1.CircuitHostFragment"
         android:label="@string/circuits"
         tools:layout="@layout/fragment_circuits" />
 

@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mancj.materialsearchbar.MaterialSearchBar
 import hr.algebra.formula1.databinding.FragmentDriversBinding
+import hr.algebra.formula1.model.enum.DriverSpinnerOptions
 import hr.algebra.formula1.viewmodel.DriverViewModel
 
 class DriversFragment : Fragment() {
@@ -34,16 +35,16 @@ class DriversFragment : Fragment() {
         (activity as HostActivity).supportActionBar?.title = getString(R.string.drivers)
 
         initSpinner()
-        initDriverAdapter()
+        initAdapter()
         initSearchListeners()
     }
 
     private fun initSpinner() =
         binding.driverSpinner.setItems(
-            resources.getStringArray(R.array.driver_options_array).toMutableList()
+            resources.getStringArray(R.array.driver_spinner_values).toMutableList()
         )
 
-    private fun initDriverAdapter() {
+    private fun initAdapter() {
         driverAdapter = DriverAdapter(requireContext())
         binding.rvDrivers.apply {
             layoutManager = LinearLayoutManager(activity)
@@ -52,26 +53,25 @@ class DriversFragment : Fragment() {
 
         viewModel.getDriversData().observe(
             viewLifecycleOwner,
-            { drivers ->
-                driverAdapter.setDrivers(drivers)
-            }
+            { drivers -> driverAdapter.setDrivers(drivers) }
         )
     }
 
     private fun initSearchListeners() {
         binding.driverSearchBar.setOnSearchActionListener(object :
                 MaterialSearchBar.OnSearchActionListener {
-                override fun onSearchStateChanged(enabled: Boolean) { }
-
                 override fun onSearchConfirmed(text: CharSequence?) {
                     when (binding.driverSpinner.selectedIndex) {
-                        0 -> viewModel.filterDriversByName(text.toString())
-                        1 -> viewModel.filterDriversByLastName(text.toString())
-                        2 -> viewModel.filterDriversByNationality(text.toString())
+                        DriverSpinnerOptions.NAME.ordinal -> viewModel.filterDriversByName(text.toString())
+                        DriverSpinnerOptions.LAST_NAME.ordinal -> viewModel.filterDriversByLastName(text.toString())
+                        DriverSpinnerOptions.NATIONALITY.ordinal -> viewModel.filterDriversByNationality(
+                            text.toString()
+                        )
                     }
                 }
 
-                override fun onButtonClicked(buttonCode: Int) { }
+                override fun onSearchStateChanged(enabled: Boolean) {}
+                override fun onButtonClicked(buttonCode: Int) {}
             })
     }
 

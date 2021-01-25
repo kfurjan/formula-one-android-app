@@ -18,9 +18,9 @@
             android:layout_width="@dimen/card_iv_height"
             android:layout_height="match_parent"
             android:background="?attr/colorSecondaryVariant"
-            android:contentDescription="@string/helmet_desc"
+            android:contentDescription="@string/circuit_desc"
             android:padding="@dimen/card_iv_padding"
-            android:src="@drawable/helmet" />
+            android:src="@drawable/race_track" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,26 +31,19 @@
             tools:ignore="RtlSymmetry">
 
             <TextView
-                android:id="@+id/tvDriverInformation"
+                android:id="@+id/tvCircuitName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textStyle="bold"
-                tools:text="Michael Schumacher (MSC)" />
+                tools:text="Nurburging Nordschleife" />
 
             <TextView
-                android:id="@+id/tvDriverNationality"
+                android:id="@+id/tvCircuitInformation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceBody2"
-                tools:text="German" />
-
-            <TextView
-                android:id="@+id/tvDriverBirthDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceBody2"
-                tools:text="11-06-1998" />
+                tools:text="Germany" />
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -33,11 +33,6 @@ class DriverAdapter(private val context: Context) :
         }
     }
 
-    fun setDrivers(drivers: List<Driver>) {
-        this.drivers = drivers
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
             LayoutInflater.from(parent.context)
@@ -52,4 +47,9 @@ class DriverAdapter(private val context: Context) :
     }
 
     override fun getItemCount() = drivers.size
+
+    fun setDrivers(drivers: List<Driver>) {
+        this.drivers = drivers
+        notifyDataSetChanged()
+    }
 }

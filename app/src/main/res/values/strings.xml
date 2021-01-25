@@ -18,16 +18,19 @@
     <string name="really">Do you really want to exit?</string>
     <string name="cancel">Cancel</string>
     <string name="helmet_desc">Helmet</string>
-    <string name="driver_menu_first_name">First name</string>
-    <string name="driver_menu_last_name">Last name</string>
-    <string name="driver_menu_nationality">Nationality</string>
-    <string name="driver_spinner_name">Name</string>
-    <string name="driver_spinner_last_name">Last name</string>
-    <string name="driver_spinner_nationality">Nationality</string>
     <string name="driver_search_placeholder">Search driver</string>
     <string name="web_view_icon">WebView icon</string>
     <string name="share">Share</string>
     <string name="share_url_with_friends">Share URL with friends</string>
     <string name="copied_url">Copied URL</string>
     <string name="text_plain">text/plain</string>
+    <string name="circuit_search_placeholder">Search circuit</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last name</string>
+    <string name="nationality">Nationality</string>
+    <string name="country">Country</string>
+    <string name="circuit_desc">Circuit icon</string>
+    <string name="formula1_db">formula1.db</string>
+    <string name="circuits_tab_title">Circuits</string>
+    <string name="maps_tab_title">Map</string>
 </resources>

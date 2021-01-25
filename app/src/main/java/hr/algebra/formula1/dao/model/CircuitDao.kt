@@ -11,4 +11,10 @@ abstract class CircuitDao : BaseDao<Circuit> {
 
     @Query("SELECT * FROM Circuit")
     abstract fun query(): LiveData<List<Circuit>>
+
+    @Query("SELECT * FROM Circuit WHERE name LIKE '%' || :name || '%'")
+    abstract fun queryByName(name: String): LiveData<List<Circuit>>
+
+    @Query("SELECT * FROM Circuit WHERE countryName LIKE '%' || :country || '%'")
+    abstract fun queryByCountry(country: String): LiveData<List<Circuit>>
 }

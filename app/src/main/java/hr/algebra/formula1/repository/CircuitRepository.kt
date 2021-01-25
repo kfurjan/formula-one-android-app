@@ -19,4 +19,10 @@ class CircuitRepository(context: Context) : Repository<Circuit> {
     override suspend fun update(data: Circuit) = circuitDao.update(data)
 
     override suspend fun delete(data: Circuit) = circuitDao.delete(data)
+
+    fun getCircuitsFilteredByName(name: String): LiveData<List<Circuit>> =
+        Transformations.map(circuitDao.queryByName(name)) { circuits -> circuits }
+
+    fun getCircuitsFilteredByCountry(country: String): LiveData<List<Circuit>> =
+        Transformations.map(circuitDao.queryByCountry(country)) { circuits -> circuits }
 }
