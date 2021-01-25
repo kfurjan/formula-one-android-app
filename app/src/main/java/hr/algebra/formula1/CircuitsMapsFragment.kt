@@ -30,11 +30,15 @@ class CircuitsMapsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initViewModel()
-        // addMarkersToMap()
     }
 
     private fun initViewModel() {
         viewModel = CircuitViewModel.getInstance((activity as HostActivity).application)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        addMarkersToMap()
     }
 
     private fun addMarkersToMap() {
@@ -54,10 +58,5 @@ class CircuitsMapsFragment : Fragment() {
                 }
             )
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        addMarkersToMap()
     }
 }

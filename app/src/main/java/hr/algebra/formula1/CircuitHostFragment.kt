@@ -1,7 +1,6 @@
 package hr.algebra.formula1
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,6 +45,12 @@ class CircuitHostFragment : Fragment() {
     private fun initViewPager() {
         binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding.viewPager.adapter = tabsAdapter
+
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                (binding.viewPager.adapter as TabbedCollectionAdapter).notifyItemChanged(position)
+            }
+        })
     }
 
     private fun initTabs() =
