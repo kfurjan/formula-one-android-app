@@ -16,7 +16,7 @@
         android:id="@+id/ivNavHeader"
         android:layout_width="@dimen/nav_header_icon_size"
         android:layout_height="@dimen/nav_header_icon_size"
-        android:src="@drawable/navigation_header_icon"
+        android:src="@drawable/racing_car"
         android:contentDescription="@string/navigation_header_icon_desc" />
 
     <TextView

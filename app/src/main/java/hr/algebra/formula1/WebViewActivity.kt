@@ -31,9 +31,9 @@ class WebViewActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
-        val url = intent.getStringExtra(URL)
-        binding.webView.loadUrl(url)
+        binding.webView.loadUrl(intent.getStringExtra(URL))
         binding.webView.settings.javaScriptEnabled = true
+
         binding.webView.webViewClient = object : WebViewClient() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 binding.progressBarLayout.visibility = View.VISIBLE

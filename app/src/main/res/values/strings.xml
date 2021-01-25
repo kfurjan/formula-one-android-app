@@ -36,4 +36,10 @@
     <string name="constructor_search_placeholder">Search constructors</string>
     <string name="constructor_desc">Constructor image placeholder</string>
     <string name="seasons_search_placeholder">Search seasons</string>
+    <string name="about_page_racing_car_picture">About page racing car picture</string>
+    <string name="created_by">Created by</string>
+    <string name="kevin_furjan">Kevin Furjan</string>
+    <string name="application_version">Application version</string>
+    <string name="toggle_dark_mode">Toggle dark mode</string>
+    <string name="toggle_state">TOGGLE_STATE</string>
 </resources>

@@ -1,13 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AboutFragment">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/about" />
+        android:layout_height="@dimen/iv_about_placeholder"
+        android:contentDescription="@string/about_page_racing_car_picture"
+        android:src="@drawable/racing_car" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/about_linear_layout_height"
+        android:orientation="horizontal">
+
+        <TextView
+            android:padding="@dimen/tv_about_padding"
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="match_parent"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:text="@string/created_by" />
+
+        <TextView
+            android:padding="@dimen/tv_about_content_padding"
+            android:layout_width="0dp"
+            android:layout_weight="0.28"
+            android:layout_height="match_parent"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:text="@string/kevin_furjan" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/about_linear_layout_height"
+        android:orientation="horizontal">
+
+        <TextView
+            android:padding="@dimen/tv_about_padding"
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="match_parent"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:text="@string/toggle_dark_mode" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/themeSwitch"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_marginEnd="@dimen/about_switch_margin_end"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/about_linear_layout_height"
+        android:orientation="horizontal">
+
+        <TextView
+            android:padding="@dimen/tv_about_padding"
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="match_parent"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:text="@string/application_version" />
+
+        <TextView
+            android:id="@+id/tvAppVersion"
+            android:padding="@dimen/tv_about_content_padding"
+            android:layout_width="0dp"
+            android:layout_weight="0.15"
+            android:layout_height="match_parent"
+            android:textAppearance="?attr/textAppearanceBody2"
+            tools:text="1.0.0" />
+    </LinearLayout>
+
+</LinearLayout>

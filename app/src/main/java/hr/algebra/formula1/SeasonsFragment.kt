@@ -62,4 +62,9 @@ class SeasonsFragment : Fragment() {
                 override fun onButtonClicked(buttonCode: Int) {}
             })
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
