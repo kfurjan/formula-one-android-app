@@ -18,7 +18,7 @@ import hr.algebra.formula1.util.SingletonHolder
 @Database(
     entities = [Driver::class, Circuit::class, Constructor::class, Season::class],
     version = 1,
-    exportSchema = false
+    exportSchema = true
 )
 abstract class Formula1Database : RoomDatabase() {
     abstract fun driverDao(): DriverDao
