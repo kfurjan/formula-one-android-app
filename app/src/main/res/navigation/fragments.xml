@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/navItemDrivers"
-        android:name="hr.algebra.formula1.DriversFragment"
+        android:name="hr.kfurjan.formula1.DriversFragment"
         android:label="@string/drivers"
         tools:layout="@layout/fragment_drivers" />
 
     <fragment
         android:id="@+id/navItemConstructors"
-        android:name="hr.algebra.formula1.ConstructorsFragment"
+        android:name="hr.kfurjan.formula1.ConstructorsFragment"
         android:label="@string/constructors"
         tools:layout="@layout/fragment_constructors" />
 
     <fragment
         android:id="@+id/navItemCircuits"
-        android:name="hr.algebra.formula1.CircuitHostFragment"
+        android:name="hr.kfurjan.formula1.CircuitHostFragment"
         android:label="@string/circuits"
         tools:layout="@layout/fragment_circuits" />
 
     <fragment
         android:id="@+id/navItemSeasons"
-        android:name="hr.algebra.formula1.SeasonsFragment"
+        android:name="hr.kfurjan.formula1.SeasonsFragment"
         android:label="@string/seasons"
         tools:layout="@layout/fragment_seasons" />
 
     <fragment
         android:id="@+id/navItemAbout"
-        android:name="hr.algebra.formula1.AboutFragment"
+        android:name="hr.kfurjan.formula1.AboutFragment"
         android:label="@string/about"
         tools:layout="@layout/fragment_about" />
 
