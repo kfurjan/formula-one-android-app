@@ -2,13 +2,13 @@ package hr.kfurjan.formula1.api
 
 import android.content.Context
 import android.util.Log
+import dagger.hilt.android.qualifiers.ApplicationContext
 import hr.kfurjan.formula1.Formula1DataReceiver
 import hr.kfurjan.formula1.api.communication.circuits.CircuitApi
 import hr.kfurjan.formula1.api.communication.constructors.ConstructorApi
 import hr.kfurjan.formula1.api.communication.drivers.DriverApi
 import hr.kfurjan.formula1.api.communication.seasons.SeasonApi
 import hr.kfurjan.formula1.extensions.sendBroadcast
-import hr.kfurjan.formula1.factory.RepositoryFactory
 import hr.kfurjan.formula1.model.Circuit
 import hr.kfurjan.formula1.model.Constructor
 import hr.kfurjan.formula1.model.Driver
@@ -25,20 +25,18 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-class Formula1DataFetcher(private val context: Context) {
+class Formula1DataFetcher @Inject constructor(
+    @ApplicationContext private val context: Context,
+    private val driverRepository: DriverRepository,
+    private val circuitRepository: CircuitRepository,
+    private val seasonRepository: SeasonRepository,
+    private val constructorRepository: ConstructorRepository
+) {
 
     private val dataFetcherScope = CoroutineScope(Dispatchers.IO)
     private val formula1DataApi: Formula1DataApi
-
-    private val driverRepository: DriverRepository =
-        RepositoryFactory.getRepository(context)
-    private val circuitRepository: CircuitRepository =
-        RepositoryFactory.getRepository(context)
-    private val seasonRepository: SeasonRepository =
-        RepositoryFactory.getRepository(context)
-    private val constructorRepository: ConstructorRepository =
-        RepositoryFactory.getRepository(context)
 
     init {
         val retrofit = Retrofit.Builder()

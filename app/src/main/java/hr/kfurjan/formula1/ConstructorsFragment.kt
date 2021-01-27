@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mancj.materialsearchbar.MaterialSearchBar
+import dagger.hilt.android.AndroidEntryPoint
 import hr.kfurjan.formula1.databinding.FragmentConstructorsBinding
 import hr.kfurjan.formula1.model.enum.ConstructorSpinnerOptions
 import hr.kfurjan.formula1.viewmodel.ConstructorViewModel
 
+@AndroidEntryPoint
 class ConstructorsFragment : Fragment() {
 
     private var _binding: FragmentConstructorsBinding? = null

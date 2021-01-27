@@ -1,15 +1,12 @@
 package hr.kfurjan.formula1.repository
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import hr.kfurjan.formula1.dao.Formula1Database
 import hr.kfurjan.formula1.dao.model.SeasonDao
 import hr.kfurjan.formula1.model.Season
+import javax.inject.Inject
 
-class SeasonRepository(context: Context) : Repository<Season> {
-
-    private val seasonDao: SeasonDao = Formula1Database.getInstance(context).seasonDao()
+class SeasonRepository @Inject constructor(private val seasonDao: SeasonDao) : Repository<Season> {
 
     override fun queryAll(): LiveData<List<Season>> =
         Transformations.map(seasonDao.query()) { seasons -> seasons }

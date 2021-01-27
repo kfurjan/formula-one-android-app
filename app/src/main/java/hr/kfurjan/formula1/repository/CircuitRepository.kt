@@ -1,15 +1,13 @@
 package hr.kfurjan.formula1.repository
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import hr.kfurjan.formula1.dao.Formula1Database
 import hr.kfurjan.formula1.dao.model.CircuitDao
 import hr.kfurjan.formula1.model.Circuit
+import javax.inject.Inject
 
-class CircuitRepository(context: Context) : Repository<Circuit> {
-
-    private val circuitDao: CircuitDao = Formula1Database.getInstance(context).circuitDao()
+class CircuitRepository @Inject constructor(private val circuitDao: CircuitDao) :
+    Repository<Circuit> {
 
     override fun queryAll(): LiveData<List<Circuit>> =
         Transformations.map(circuitDao.query()) { circuits -> circuits }

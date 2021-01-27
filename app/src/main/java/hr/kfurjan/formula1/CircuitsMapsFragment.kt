@@ -5,19 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import dagger.hilt.android.AndroidEntryPoint
 import hr.kfurjan.formula1.databinding.FragmentCircuitsMapsBinding
 import hr.kfurjan.formula1.viewmodel.CircuitViewModel
 
+@AndroidEntryPoint
 class CircuitsMapsFragment : Fragment() {
 
     private var _binding: FragmentCircuitsMapsBinding? = null
     private val binding
         get() = _binding!!
 
-    private lateinit var viewModel: CircuitViewModel
+    private val viewModel: CircuitViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,14 +29,6 @@ class CircuitsMapsFragment : Fragment() {
     ): View {
         _binding = FragmentCircuitsMapsBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initViewModel()
-    }
-
-    private fun initViewModel() {
-        viewModel = CircuitViewModel.getInstance((activity as HostActivity).application)
     }
 
     override fun onResume() {

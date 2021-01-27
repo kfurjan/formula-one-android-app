@@ -1,17 +1,15 @@
 package hr.kfurjan.formula1.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import hr.kfurjan.formula1.factory.RepositoryFactory
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import hr.kfurjan.formula1.model.Driver
 import hr.kfurjan.formula1.repository.DriverRepository
+import javax.inject.Inject
 
-class DriverViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val context = getApplication<Application>().applicationContext
-    private val repository: DriverRepository = RepositoryFactory.getRepository(context)
+@HiltViewModel
+class DriverViewModel @Inject constructor(private val repository: DriverRepository) : ViewModel() {
 
     private val _drivers = MediatorLiveData<List<Driver>>()
     private val drivers: LiveData<List<Driver>>

@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mancj.materialsearchbar.MaterialSearchBar
+import dagger.hilt.android.AndroidEntryPoint
 import hr.kfurjan.formula1.databinding.FragmentDriversBinding
 import hr.kfurjan.formula1.model.enum.DriverSpinnerOptions
 import hr.kfurjan.formula1.viewmodel.DriverViewModel
 
+@AndroidEntryPoint
 class DriversFragment : Fragment() {
 
     private var _binding: FragmentDriversBinding? = null

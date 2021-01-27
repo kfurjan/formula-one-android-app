@@ -1,18 +1,16 @@
 package hr.kfurjan.formula1.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import hr.kfurjan.formula1.factory.RepositoryFactory
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import hr.kfurjan.formula1.model.Season
 import hr.kfurjan.formula1.repository.SeasonRepository
+import javax.inject.Inject
 
-class SeasonViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val context = getApplication<Application>().applicationContext
-    private val repository: SeasonRepository = RepositoryFactory.getRepository(context)
+@HiltViewModel
+class SeasonViewModel @Inject constructor(private val repository: SeasonRepository) : ViewModel() {
 
     private val _seasons = MutableLiveData<String>()
     private lateinit var seasons: LiveData<List<Season>>
