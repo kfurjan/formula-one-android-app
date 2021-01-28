@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import dagger.hilt.android.AndroidEntryPoint
 import hr.kfurjan.formula1.databinding.FragmentCircuitHostBinding
 
-@AndroidEntryPoint
 class CircuitHostFragment : Fragment() {
 
     private var _binding: FragmentCircuitHostBinding? = null

@@ -23,8 +23,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
 class Formula1DataFetcher @Inject constructor(
@@ -32,19 +30,11 @@ class Formula1DataFetcher @Inject constructor(
     private val driverRepository: DriverRepository,
     private val circuitRepository: CircuitRepository,
     private val seasonRepository: SeasonRepository,
-    private val constructorRepository: ConstructorRepository
+    private val constructorRepository: ConstructorRepository,
+    private val formula1DataApi: Formula1DataApi
 ) {
 
     private val dataFetcherScope = CoroutineScope(Dispatchers.IO)
-    private val formula1DataApi: Formula1DataApi
-
-    init {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(API_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        formula1DataApi = retrofit.create(Formula1DataApi::class.java)
-    }
 
     fun fetchData() {
         fetchCircuits()

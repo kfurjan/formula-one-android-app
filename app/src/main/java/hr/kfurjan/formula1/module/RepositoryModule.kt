@@ -18,15 +18,15 @@ import hr.kfurjan.formula1.repository.SeasonRepository
 object RepositoryModule {
 
     @Provides
-    fun providesDriverRepository(driverDao: DriverDao) = DriverRepository(driverDao)
+    fun provideDriverRepository(driverDao: DriverDao) = DriverRepository(driverDao)
 
     @Provides
-    fun providesCircuitRepository(circuitDao: CircuitDao) = CircuitRepository(circuitDao)
+    fun provideCircuitRepository(circuitDao: CircuitDao) = CircuitRepository(circuitDao)
 
     @Provides
-    fun providesConstructorRepository(constructorDao: ConstructorDao) =
+    fun provideConstructorRepository(constructorDao: ConstructorDao) =
         ConstructorRepository(constructorDao)
 
     @Provides
-    fun providesSeasonRepository(seasonDao: SeasonDao) = SeasonRepository(seasonDao)
+    fun provideSeasonRepository(seasonDao: SeasonDao) = SeasonRepository(seasonDao)
 }

@@ -7,7 +7,6 @@ import hr.kfurjan.formula1.api.communication.seasons.SeasonApi
 import retrofit2.Call
 import retrofit2.http.GET
 
-const val API_URL = "http://ergast.com/api/f1/"
 const val LIMIT = 1000
 
 interface Formula1DataApi {

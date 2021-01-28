@@ -31,7 +31,8 @@ object DatabaseModule {
     fun provideCircuitDao(formula1Database: Formula1Database) = formula1Database.circuitDao()
 
     @Provides
-    fun provideConstructorDao(formula1Database: Formula1Database) = formula1Database.constructorDao()
+    fun provideConstructorDao(formula1Database: Formula1Database) =
+        formula1Database.constructorDao()
 
     @Provides
     fun provideSeasonDao(formula1Database: Formula1Database) = formula1Database.seasonDao()
