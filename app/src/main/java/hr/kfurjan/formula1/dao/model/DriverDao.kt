@@ -9,15 +9,15 @@ import hr.kfurjan.formula1.model.Driver
 @Dao
 abstract class DriverDao : BaseDao<Driver> {
 
-    @Query("SELECT * FROM Driver")
+    @Query("SELECT * FROM drivers_table")
     abstract fun query(): LiveData<List<Driver>>
 
-    @Query("SELECT * FROM Driver WHERE firstName LIKE '%' || :firstName || '%'")
+    @Query("SELECT * FROM drivers_table WHERE firstName LIKE '%' || :firstName || '%'")
     abstract fun queryByName(firstName: String): LiveData<List<Driver>>
 
-    @Query("SELECT * FROM Driver WHERE lastName LIKE '%' || :lastName || '%'")
+    @Query("SELECT * FROM drivers_table WHERE lastName LIKE '%' || :lastName || '%'")
     abstract fun queryByLastName(lastName: String): LiveData<List<Driver>>
 
-    @Query("SELECT * FROM Driver WHERE nationality LIKE '%' || :nationality || '%'")
+    @Query("SELECT * FROM drivers_table WHERE nationality LIKE '%' || :nationality || '%'")
     abstract fun queryByNationality(nationality: String): LiveData<List<Driver>>
 }
