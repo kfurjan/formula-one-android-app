@@ -9,12 +9,12 @@ import hr.kfurjan.formula1.model.Circuit
 @Dao
 abstract class CircuitDao : BaseDao<Circuit> {
 
-    @Query("SELECT * FROM Circuit")
+    @Query("SELECT * FROM circuits_table")
     abstract fun query(): LiveData<List<Circuit>>
 
-    @Query("SELECT * FROM Circuit WHERE name LIKE '%' || :name || '%'")
+    @Query("SELECT * FROM circuits_table WHERE name LIKE '%' || :name || '%'")
     abstract fun queryByName(name: String): LiveData<List<Circuit>>
 
-    @Query("SELECT * FROM Circuit WHERE countryName LIKE '%' || :country || '%'")
+    @Query("SELECT * FROM circuits_table WHERE countryName LIKE '%' || :country || '%'")
     abstract fun queryByCountry(country: String): LiveData<List<Circuit>>
 }

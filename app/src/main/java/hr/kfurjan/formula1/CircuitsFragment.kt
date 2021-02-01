@@ -5,19 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mancj.materialsearchbar.MaterialSearchBar
+import dagger.hilt.android.AndroidEntryPoint
 import hr.kfurjan.formula1.databinding.FragmentCircuitsBinding
 import hr.kfurjan.formula1.model.enum.CircuitSpinnerOptions
 import hr.kfurjan.formula1.viewmodel.CircuitViewModel
 
+@AndroidEntryPoint
 class CircuitsFragment : Fragment() {
 
     private var _binding: FragmentCircuitsBinding? = null
     private val binding
         get() = _binding!!
 
-    private lateinit var viewModel: CircuitViewModel
+    private val viewModel: CircuitViewModel by activityViewModels()
     private lateinit var circuitAdapter: CircuitAdapter
 
     override fun onCreateView(
@@ -33,14 +36,9 @@ class CircuitsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as HostActivity).supportActionBar?.title = getString(R.string.circuits)
 
-        initViewModel()
         initSpinner()
         initAdapter()
         initSearchListeners()
-    }
-
-    private fun initViewModel() {
-        viewModel = CircuitViewModel.getInstance((activity as HostActivity).application)
     }
 
     private fun initSpinner() =

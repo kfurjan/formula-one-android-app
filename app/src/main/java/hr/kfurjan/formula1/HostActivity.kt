@@ -9,11 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import dagger.hilt.android.AndroidEntryPoint
 import hr.kfurjan.formula1.databinding.ActivityHostBinding
 
 private lateinit var binding: ActivityHostBinding
 private lateinit var toggle: ActionBarDrawerToggle
 
+@AndroidEntryPoint
 class HostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

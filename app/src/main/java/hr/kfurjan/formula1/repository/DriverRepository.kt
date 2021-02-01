@@ -1,15 +1,12 @@
 package hr.kfurjan.formula1.repository
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import hr.kfurjan.formula1.dao.Formula1Database
 import hr.kfurjan.formula1.dao.model.DriverDao
 import hr.kfurjan.formula1.model.Driver
+import javax.inject.Inject
 
-class DriverRepository(context: Context) : Repository<Driver> {
-
-    private val driverDao: DriverDao = Formula1Database.getInstance(context).driverDao()
+class DriverRepository @Inject constructor(private val driverDao: DriverDao) : Repository<Driver> {
 
     override fun queryAll(): LiveData<List<Driver>> =
         Transformations.map(driverDao.query()) { drivers -> drivers }

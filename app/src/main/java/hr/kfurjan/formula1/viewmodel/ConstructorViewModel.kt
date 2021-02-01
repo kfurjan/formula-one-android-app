@@ -1,17 +1,16 @@
 package hr.kfurjan.formula1.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import hr.kfurjan.formula1.factory.RepositoryFactory
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import hr.kfurjan.formula1.model.Constructor
 import hr.kfurjan.formula1.repository.ConstructorRepository
+import javax.inject.Inject
 
-class ConstructorViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val context = getApplication<Application>().applicationContext
-    private val repository: ConstructorRepository = RepositoryFactory.getRepository(context)
+@HiltViewModel
+class ConstructorViewModel @Inject constructor(private val repository: ConstructorRepository) :
+    ViewModel() {
 
     private val _constructors = MediatorLiveData<List<Constructor>>()
     private val constructors: LiveData<List<Constructor>>
