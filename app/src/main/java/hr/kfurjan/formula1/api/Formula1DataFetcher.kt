@@ -17,13 +17,13 @@ import hr.kfurjan.formula1.repository.CircuitRepository
 import hr.kfurjan.formula1.repository.ConstructorRepository
 import hr.kfurjan.formula1.repository.DriverRepository
 import hr.kfurjan.formula1.repository.SeasonRepository
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
 class Formula1DataFetcher @Inject constructor(
     @ApplicationContext private val context: Context,

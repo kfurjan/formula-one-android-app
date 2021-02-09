@@ -13,9 +13,9 @@ import hr.kfurjan.formula1.repository.CircuitRepository
 import hr.kfurjan.formula1.repository.ConstructorRepository
 import hr.kfurjan.formula1.repository.DriverRepository
 import hr.kfurjan.formula1.repository.SeasonRepository
-import javax.inject.Singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
