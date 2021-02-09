@@ -62,21 +62,26 @@ class DriversFragment : Fragment() {
     }
 
     private fun initSearchListeners() {
-        binding.driverSearchBar.setOnSearchActionListener(object :
+        binding.driverSearchBar.setOnSearchActionListener(
+            object :
                 MaterialSearchBar.OnSearchActionListener {
                 override fun onSearchConfirmed(text: CharSequence?) {
                     when (binding.driverSpinner.selectedIndex) {
-                        DriverSpinnerOptions.NAME.ordinal -> viewModel.filterDriversByName(text.toString())
-                        DriverSpinnerOptions.LAST_NAME.ordinal -> viewModel.filterDriversByLastName(text.toString())
-                        DriverSpinnerOptions.NATIONALITY.ordinal -> viewModel.filterDriversByNationality(
-                            text.toString()
-                        )
+                        DriverSpinnerOptions.NAME.ordinal
+                        -> viewModel.filterDriversByName(text.toString())
+
+                        DriverSpinnerOptions.LAST_NAME.ordinal
+                        -> viewModel.filterDriversByLastName(text.toString())
+
+                        DriverSpinnerOptions.NATIONALITY.ordinal
+                        -> viewModel.filterDriversByNationality(text.toString())
                     }
                 }
 
                 override fun onSearchStateChanged(enabled: Boolean) {}
                 override fun onButtonClicked(buttonCode: Int) {}
-            })
+            }
+        )
     }
 
     override fun onDestroyView() {

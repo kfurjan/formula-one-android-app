@@ -46,11 +46,14 @@ class CircuitHostFragment : Fragment() {
         binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding.viewPager.adapter = tabsAdapter
 
-        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                (binding.viewPager.adapter as TabbedCollectionAdapter).notifyItemChanged(position)
+        binding.viewPager.registerOnPageChangeCallback(
+            object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    (binding.viewPager.adapter as TabbedCollectionAdapter)
+                        .notifyItemChanged(position)
+                }
             }
-        })
+        )
     }
 
     private fun initTabs() =

@@ -1,6 +1,6 @@
 package hr.kfurjan.formula1
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**

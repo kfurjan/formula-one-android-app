@@ -28,12 +28,16 @@ class ConstructorViewModel @Inject constructor(private val repository: Construct
         }
 
     fun filterConstructorsByName(name: String) =
-        _constructors.addSource(repository.getConstructorsFilteredByName(name)) { constructors ->
+        _constructors.addSource(
+            repository.getConstructorsFilteredByName(name)
+        ) { constructors ->
             _constructors.value = constructors
         }
 
     fun filterConstructorsByNationality(nationality: String) =
-        _constructors.addSource(repository.getConstructorsFilteredByNationality(nationality)) { constructors ->
+        _constructors.addSource(
+            repository.getConstructorsFilteredByNationality(nationality)
+        ) { constructors ->
             _constructors.value = constructors
         }
 }

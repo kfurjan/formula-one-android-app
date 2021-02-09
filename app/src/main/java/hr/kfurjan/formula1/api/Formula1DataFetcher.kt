@@ -17,13 +17,13 @@ import hr.kfurjan.formula1.repository.CircuitRepository
 import hr.kfurjan.formula1.repository.ConstructorRepository
 import hr.kfurjan.formula1.repository.DriverRepository
 import hr.kfurjan.formula1.repository.SeasonRepository
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import javax.inject.Inject
 
 class Formula1DataFetcher @Inject constructor(
     @ApplicationContext private val context: Context,
@@ -33,7 +33,6 @@ class Formula1DataFetcher @Inject constructor(
     private val constructorRepository: ConstructorRepository,
     private val formula1DataApi: Formula1DataApi
 ) {
-
     private val dataFetcherScope = CoroutineScope(Dispatchers.IO)
 
     fun fetchData() {
@@ -49,20 +48,22 @@ class Formula1DataFetcher @Inject constructor(
     private fun fetchSeasons() = fetchApiData(formula1DataApi.fetchSeasons())
 
     private fun <T> fetchApiData(request: Call<T>) {
-        request.enqueue(object : Callback<T> {
-            override fun onResponse(
-                call: Call<T>,
-                response: Response<T>
-            ) {
-                if (response.body() != null) {
-                    populateData(response.body())
+        request.enqueue(
+            object : Callback<T> {
+                override fun onResponse(
+                    call: Call<T>,
+                    response: Response<T>
+                ) {
+                    if (response.body() != null) {
+                        populateData(response.body())
+                    }
+                }
+
+                override fun onFailure(call: Call<T>, t: Throwable) {
+                    Log.d(javaClass.name, t.message, t)
                 }
             }
-
-            override fun onFailure(call: Call<T>, t: Throwable) {
-                Log.d(javaClass.name, t.message, t)
-            }
-        })
+        )
     }
 
     private fun <T> populateData(data: T) =

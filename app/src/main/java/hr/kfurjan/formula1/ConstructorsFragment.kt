@@ -62,18 +62,23 @@ class ConstructorsFragment : Fragment() {
     }
 
     private fun initSearchListeners() {
-        binding.constructorSearchBar.setOnSearchActionListener(object :
+        binding.constructorSearchBar.setOnSearchActionListener(
+            object :
                 MaterialSearchBar.OnSearchActionListener {
                 override fun onSearchConfirmed(text: CharSequence?) {
                     when (binding.constructorSpinner.selectedIndex) {
-                        ConstructorSpinnerOptions.NAME.ordinal -> viewModel.filterConstructorsByName(text.toString())
-                        ConstructorSpinnerOptions.NATIONALITY.ordinal -> viewModel.filterConstructorsByNationality(text.toString())
+                        ConstructorSpinnerOptions.NAME.ordinal
+                        -> viewModel.filterConstructorsByName(text.toString())
+
+                        ConstructorSpinnerOptions.NATIONALITY.ordinal
+                        -> viewModel.filterConstructorsByNationality(text.toString())
                     }
                 }
 
                 override fun onSearchStateChanged(enabled: Boolean) {}
                 override fun onButtonClicked(buttonCode: Int) {}
-            })
+            }
+        )
     }
 
     override fun onDestroyView() {

@@ -54,23 +54,30 @@ class CircuitsFragment : Fragment() {
         }
 
         viewModel.getCircuitsData().observe(
-            viewLifecycleOwner, { circuits -> circuitAdapter.setCircuits(circuits) }
+            viewLifecycleOwner,
+            { circuits -> circuitAdapter.setCircuits(circuits) }
         )
     }
 
     private fun initSearchListeners() {
-        binding.circuitSearchBar.setOnSearchActionListener(object :
+        binding.circuitSearchBar.setOnSearchActionListener(
+            object :
                 MaterialSearchBar.OnSearchActionListener {
                 override fun onSearchConfirmed(text: CharSequence?) {
                     when (binding.circuitSpinner.selectedIndex) {
-                        CircuitSpinnerOptions.NAME.ordinal -> viewModel.filterCircuitsByName(text.toString())
-                        CircuitSpinnerOptions.COUNTRY.ordinal -> viewModel.filterCircuitsByCountry(text.toString())
+                        CircuitSpinnerOptions.NAME.ordinal -> viewModel.filterCircuitsByName(
+                            text.toString()
+                        )
+                        CircuitSpinnerOptions.COUNTRY.ordinal -> viewModel.filterCircuitsByCountry(
+                            text.toString()
+                        )
                     }
                 }
 
                 override fun onSearchStateChanged(enabled: Boolean) {}
                 override fun onButtonClicked(buttonCode: Int) {}
-            })
+            }
+        )
     }
 
     override fun onDestroyView() {

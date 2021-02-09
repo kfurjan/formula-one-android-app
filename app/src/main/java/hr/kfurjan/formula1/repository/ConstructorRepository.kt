@@ -19,8 +19,10 @@ class ConstructorRepository @Inject constructor(private val constructorDao: Cons
     override suspend fun delete(data: Constructor) = constructorDao.delete(data)
 
     fun getConstructorsFilteredByName(name: String): LiveData<List<Constructor>> =
-        Transformations.map(constructorDao.queryByName(name)) { constructors -> constructors }
+        Transformations
+            .map(constructorDao.queryByName(name)) { constructors -> constructors }
 
     fun getConstructorsFilteredByNationality(nationality: String): LiveData<List<Constructor>> =
-        Transformations.map(constructorDao.queryByNationality(nationality)) { constructors -> constructors }
+        Transformations
+            .map(constructorDao.queryByNationality(nationality)) { constructors -> constructors }
 }

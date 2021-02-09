@@ -55,14 +55,16 @@ class SeasonsFragment : Fragment() {
     }
 
     private fun initSearchListeners() {
-        binding.seasonsSearchBar.setOnSearchActionListener(object :
+        binding.seasonsSearchBar.setOnSearchActionListener(
+            object :
                 MaterialSearchBar.OnSearchActionListener {
                 override fun onSearchConfirmed(text: CharSequence?) =
                     viewModel.filterSeasonsByYear(text.toString())
 
                 override fun onSearchStateChanged(enabled: Boolean) {}
                 override fun onButtonClicked(buttonCode: Int) {}
-            })
+            }
+        )
     }
 
     override fun onDestroyView() {

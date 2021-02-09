@@ -33,7 +33,8 @@ class SplashScreenActivity : AppCompatActivity() {
     private fun redirect() {
         if (getBooleanPreference(DATA_IMPORTED)) {
             Handler(Looper.getMainLooper()).postDelayed(
-                { startActivity<HostActivity>() }, DELAY
+                { startActivity<HostActivity>() },
+                DELAY
             )
         } else {
             if (isOnline()) {
