@@ -6,10 +6,10 @@ view and search data about Formula 1, drivers, constructors, seasons, circuits a
 ## Architecture
 
 Application with Retrofit library fetches data from [Formula One API](https://documenter.getpostman.com/view/11586746/SztEa7bL#intro) REST API and saves that data to local SQLite database using Room Persistence library.
-That data is then shown on the UI by following [Guide to app architecture](https://developer.android.com/jetpack/guide) which really focuses on principles of _separation of concerns_ and _driving UI from a model_ by
-separating Activities/Fragments from models with ViewModels and ViewModels from database with Repository layer. To further enhance application architecture, Android Hilt dependency injection library was used which
-is built on top of Dagger2.
-Using LiveData, observable Lifecycle-Aware data holder created, enables Observer Pattern when displaying data on UI, especially helpful since data on the UI can be filtered using Search Bar.
+That data is then shown on the UI by following [Guide to app architecture](https://developer.android.com/jetpack/guide) which follows MVVM architecture and really focuses on principles of _separation of concerns_ and _driving UI from a model_ by
+separating Activities/Fragments and ViewModels but also ViewModels from database with Repository layer. To further enhance application architecture, Android Hilt dependency injection library was used which
+is built on top of Dagger2. Using LiveData, observable Lifecycle-Aware data holder, enables Observer Pattern when displaying data on UI, especially helpful since data on the UI can be filtered using Search Bar.
+To ensure thread-safe operation, Kotlin Flow is used in DAO and Repository layers and LiveData for displaying UI elements.
 
 ## Application features
 
