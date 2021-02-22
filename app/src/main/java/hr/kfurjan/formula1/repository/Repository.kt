@@ -1,10 +1,10 @@
 package hr.kfurjan.formula1.repository
 
-import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.Flow
 
 interface Repository<T> {
 
-    fun queryAll(): LiveData<List<T>>
+    fun queryAll(): Flow<List<T>>
 
     suspend fun insert(data: T)
 

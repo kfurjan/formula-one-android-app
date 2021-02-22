@@ -1,4 +1,4 @@
-package hr.kfurjan.formula1.module
+package hr.kfurjan.formula1.di
 
 import android.content.Context
 import androidx.room.Room

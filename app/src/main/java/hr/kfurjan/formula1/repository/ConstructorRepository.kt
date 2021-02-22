@@ -1,16 +1,14 @@
 package hr.kfurjan.formula1.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import hr.kfurjan.formula1.dao.model.ConstructorDao
 import hr.kfurjan.formula1.model.Constructor
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class ConstructorRepository @Inject constructor(private val constructorDao: ConstructorDao) :
     Repository<Constructor> {
 
-    override fun queryAll(): LiveData<List<Constructor>> =
-        Transformations.map(constructorDao.query()) { constructors -> constructors }
+    override fun queryAll(): Flow<List<Constructor>> = constructorDao.query()
 
     override suspend fun insert(data: Constructor) = constructorDao.insert(data)
 
@@ -18,11 +16,9 @@ class ConstructorRepository @Inject constructor(private val constructorDao: Cons
 
     override suspend fun delete(data: Constructor) = constructorDao.delete(data)
 
-    fun getConstructorsFilteredByName(name: String): LiveData<List<Constructor>> =
-        Transformations
-            .map(constructorDao.queryByName(name)) { constructors -> constructors }
+    fun getConstructorsFilteredByName(name: String): Flow<List<Constructor>> =
+        constructorDao.queryByName(name)
 
-    fun getConstructorsFilteredByNationality(nationality: String): LiveData<List<Constructor>> =
-        Transformations
-            .map(constructorDao.queryByNationality(nationality)) { constructors -> constructors }
+    fun getConstructorsFilteredByNationality(nationality: String): Flow<List<Constructor>> =
+        constructorDao.queryByNationality(nationality)
 }

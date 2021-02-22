@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import hr.kfurjan.formula1.model.Season
 import hr.kfurjan.formula1.repository.SeasonRepository
@@ -24,7 +25,7 @@ class SeasonViewModel @Inject constructor(private val repository: SeasonReposito
 
     private fun getSeasonsFromRepository() {
         seasons = Transformations.switchMap(_seasons) { year ->
-            repository.getSeasonsFilteredByYear(year)
+            repository.getSeasonsFilteredByYear(year).asLiveData()
         }
     }
 

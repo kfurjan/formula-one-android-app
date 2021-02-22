@@ -1,16 +1,14 @@
 package hr.kfurjan.formula1.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import hr.kfurjan.formula1.dao.model.CircuitDao
 import hr.kfurjan.formula1.model.Circuit
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class CircuitRepository @Inject constructor(private val circuitDao: CircuitDao) :
     Repository<Circuit> {
 
-    override fun queryAll(): LiveData<List<Circuit>> =
-        Transformations.map(circuitDao.query()) { circuits -> circuits }
+    override fun queryAll(): Flow<List<Circuit>> = circuitDao.query()
 
     override suspend fun insert(data: Circuit) = circuitDao.insert(data)
 
@@ -18,9 +16,9 @@ class CircuitRepository @Inject constructor(private val circuitDao: CircuitDao) 
 
     override suspend fun delete(data: Circuit) = circuitDao.delete(data)
 
-    fun getCircuitsFilteredByName(name: String): LiveData<List<Circuit>> =
-        Transformations.map(circuitDao.queryByName(name)) { circuits -> circuits }
+    fun getCircuitsFilteredByName(name: String): Flow<List<Circuit>> =
+        circuitDao.queryByName(name)
 
-    fun getCircuitsFilteredByCountry(country: String): LiveData<List<Circuit>> =
-        Transformations.map(circuitDao.queryByCountry(country)) { circuits -> circuits }
+    fun getCircuitsFilteredByCountry(country: String): Flow<List<Circuit>> =
+        circuitDao.queryByCountry(country)
 }

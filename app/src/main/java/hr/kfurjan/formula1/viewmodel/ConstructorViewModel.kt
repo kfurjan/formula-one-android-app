@@ -3,6 +3,7 @@ package hr.kfurjan.formula1.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import hr.kfurjan.formula1.model.Constructor
 import hr.kfurjan.formula1.repository.ConstructorRepository
@@ -23,20 +24,20 @@ class ConstructorViewModel @Inject constructor(private val repository: Construct
     fun getConstructorsData() = constructors
 
     private fun getAllConstructors() =
-        _constructors.addSource(repository.queryAll()) { constructors ->
+        _constructors.addSource(repository.queryAll().asLiveData()) { constructors ->
             _constructors.value = constructors
         }
 
     fun filterConstructorsByName(name: String) =
         _constructors.addSource(
-            repository.getConstructorsFilteredByName(name)
+            repository.getConstructorsFilteredByName(name).asLiveData()
         ) { constructors ->
             _constructors.value = constructors
         }
 
     fun filterConstructorsByNationality(nationality: String) =
         _constructors.addSource(
-            repository.getConstructorsFilteredByNationality(nationality)
+            repository.getConstructorsFilteredByNationality(nationality).asLiveData()
         ) { constructors ->
             _constructors.value = constructors
         }

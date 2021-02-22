@@ -3,6 +3,7 @@ package hr.kfurjan.formula1.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import hr.kfurjan.formula1.model.Driver
 import hr.kfurjan.formula1.repository.DriverRepository
@@ -22,22 +23,28 @@ class DriverViewModel @Inject constructor(private val repository: DriverReposito
     fun getDriversData() = drivers
 
     private fun getAllDrivers() =
-        _drivers.addSource(repository.queryAll()) { drivers ->
+        _drivers.addSource(repository.queryAll().asLiveData()) { drivers ->
             _drivers.value = drivers
         }
 
     fun filterDriversByName(firstName: String) =
-        _drivers.addSource(repository.getDriversFilteredByName(firstName)) { drivers ->
+        _drivers.addSource(
+            repository.getDriversFilteredByName(firstName).asLiveData()
+        ) { drivers ->
             _drivers.value = drivers
         }
 
     fun filterDriversByLastName(lastName: String) =
-        _drivers.addSource(repository.getDriversFilteredByLastName(lastName)) { drivers ->
+        _drivers.addSource(
+            repository.getDriversFilteredByLastName(lastName).asLiveData()
+        ) { drivers ->
             _drivers.value = drivers
         }
 
     fun filterDriversByNationality(nationality: String) =
-        _drivers.addSource(repository.getDriversFilteredByNationality(nationality)) { drivers ->
+        _drivers.addSource(
+            repository.getDriversFilteredByNationality(nationality).asLiveData()
+        ) { drivers ->
             _drivers.value = drivers
         }
 }
