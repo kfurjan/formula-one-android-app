@@ -14,11 +14,11 @@ import hr.kfurjan.formula1.databinding.ActivityWebViewBinding
 import hr.kfurjan.formula1.extensions.startShareIntent
 
 const val URL = "hr.kfurjan.formula1.url_name"
-private lateinit var binding: ActivityWebViewBinding
-
 private var currentUrl: String? = ""
 
 class WebViewActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityWebViewBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWebViewBinding.inflate(layoutInflater)
@@ -31,7 +31,7 @@ class WebViewActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
-        binding.webView.loadUrl(intent.getStringExtra(URL))
+        binding.webView.loadUrl(intent.getStringExtra(URL) ?: "")
         binding.webView.settings.javaScriptEnabled = true
 
         binding.webView.webViewClient = object : WebViewClient() {
