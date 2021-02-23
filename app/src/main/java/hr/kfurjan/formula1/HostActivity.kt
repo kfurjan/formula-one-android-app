@@ -12,11 +12,12 @@ import androidx.navigation.ui.NavigationUI
 import dagger.hilt.android.AndroidEntryPoint
 import hr.kfurjan.formula1.databinding.ActivityHostBinding
 
-private lateinit var binding: ActivityHostBinding
-private lateinit var toggle: ActionBarDrawerToggle
-
 @AndroidEntryPoint
 class HostActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityHostBinding
+    private lateinit var toggle: ActionBarDrawerToggle
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)

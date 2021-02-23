@@ -15,9 +15,10 @@ import hr.kfurjan.formula1.extensions.startActivity
 private const val DELAY: Long = 2600
 const val DATA_IMPORTED: String = "hr.kfurjan.formula1.data_imported"
 
-private lateinit var binding: ActivitySplashScreenBinding
-
 class SplashScreenActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySplashScreenBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

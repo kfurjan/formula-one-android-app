@@ -16,7 +16,5 @@ class TabbedCollectionAdapter(fragmentManager: FragmentManager, lifecycle: Lifec
 
     fun addFragment(fragmentPair: Pair<Fragment, String>) = fragments.add(fragmentPair)
 
-    fun getItem(position: Int) = fragments[position].first
-
     fun getTabTitle(position: Int) = fragments[position].second
 }
