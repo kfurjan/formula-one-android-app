@@ -22,6 +22,7 @@ import javax.inject.Singleton
 object DataModule {
 
     @Provides
+    @Singleton
     fun provideBaseUrl() = BuildConfig.BASE_URL
 
     @Provides
@@ -38,6 +39,7 @@ object DataModule {
         retrofit.create(Formula1DataApi::class.java)
 
     @Provides
+    @Singleton
     fun provideFormula1DataFetcher(
         @ApplicationContext context: Context,
         driverRepository: DriverRepository,

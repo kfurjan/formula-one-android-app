@@ -25,15 +25,19 @@ object DatabaseModule {
         ).build()
 
     @Provides
+    @Singleton
     fun provideDriverDao(formula1Database: Formula1Database) = formula1Database.driverDao()
 
     @Provides
+    @Singleton
     fun provideCircuitDao(formula1Database: Formula1Database) = formula1Database.circuitDao()
 
     @Provides
+    @Singleton
     fun provideConstructorDao(formula1Database: Formula1Database) =
         formula1Database.constructorDao()
 
     @Provides
+    @Singleton
     fun provideSeasonDao(formula1Database: Formula1Database) = formula1Database.seasonDao()
 }
