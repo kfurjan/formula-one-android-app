@@ -6,8 +6,8 @@ on:
     branches: [ master, main ]
 
 jobs:
-  build:
-    name: Build application
+  dependencies:
+    name: Check project dependencies
     runs-on: ubuntu-latest
 
     steps:
@@ -17,8 +17,8 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Check dependencies
+        run: ./gradlew dependencyUpdates
 
   test:
     name: Run Test Suite [Unit, Instrumented]
@@ -37,7 +37,7 @@ jobs:
       - name: Execute Instrumentation Tests (gradlew connectedCheck - api 30)
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
+          api-level: 29
           script: ./gradlew connectedCheck --stacktrace
 
   lint:
